@@ -32,49 +32,11 @@ $resultado = $con->query($sql);
                     </span>
                 </td>
                 <td>
+                    <button class="btn btn-sm btn-warning" onclick="editarLibro(<?php echo $libro['id']; ?>)">Editar</button>
                     <button class="btn btn-sm btn-danger" onclick="eliminarLibro(<?php echo $libro['id']; ?>)">Eliminar</button>
                 </td>
             </tr>
             <?php } ?>
         </tbody>
     </table>
-</div>
-
-<div class="modal fade" id="modalLibro" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Registrar Libro</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                
-                <form  id="formLibro"  action="javascript:guardarLibro()">
-                    
-                    <div class="mb-3">
-                        <label>Título:</label>
-                        <input type="text" name="titulo" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label>Autor:</label>
-                        <input type="text" name="autor" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label>ISBN:</label>
-                        <input type="text" name="isbn" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>Categoría:</label>
-                        <input type="text" name="categoria" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>Stock inicial:</label>
-                        <input type="number" name="stock" class="form-control" min="0" value="1" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Guardar Libro</button>
-                </form>
-
-            </div>
-        </div>
-    </div>
 </div>
