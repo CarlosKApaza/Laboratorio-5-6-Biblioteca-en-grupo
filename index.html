@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión de Biblioteca</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.php">📚 Biblioteca SIS 256</a>
+            <a class="navbar-brand" href="#" onclick="irAlInicio()">📚 Biblioteca SIS 256</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,10 +22,12 @@
                         <a class="nav-link text-white" href="#" onclick="cargarModulo('libros/lista.php')">Libros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#" onclick="cargarModulo('usuarios/lista.php')">Usuarios</a>
+                        <a class="nav-link text-white" href="#"
+                            onclick="cargarModulo('usuarios/lista.php')">Usuarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#" onclick="cargarModulo('prestamos/lista.php')">Préstamos</a>
+                        <a class="nav-link text-white" href="#"
+                            onclick="cargarModulo('prestamos/lista.php')">Préstamos</a>
                     </li>
                 </ul>
             </div>
@@ -37,7 +41,21 @@
         </div>
     </div>
 
+    <div id="espacio-modal"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
+
+    <script>
+        function irAlInicio() {
+            const contenedor = document.getElementById('contenido-principal');
+            contenedor.innerHTML = `
+        <div class="alert alert-info text-center shadow-sm">
+            <h4>Bienvenido al Sistema de Gestión de Biblioteca</h4>
+            <p>Selecciona una opción en el menú superior para comenzar.</p>
+        </div>`;
+        }
+    </script>
 </body>
+
 </html>

@@ -6,16 +6,22 @@ $resultado = $con->query($sql);
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h3>Catálogo de Libros</h3>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLibro" onclick="limpiarFormularioLibro()">
-        + Nuevo Libro
-    </button>
+   <button class="btn btn-primary" onclick="abrirModalRegistro()">
+    + Nuevo Libro
+</button>
 </div>
 
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
-                <th>ID</th><th>Título</th><th>Autor</th><th>ISBN</th><th>Categoría</th><th>Stock</th><th>Acciones</th>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>ISBN</th>
+                <th>Categoría</th>
+                <th>Stock</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
