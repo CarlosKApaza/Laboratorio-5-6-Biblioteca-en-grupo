@@ -1,0 +1,543 @@
+/*importamos fuete de google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* reiniciamos etiquetas por defecto del navegador */
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+/* Cuepo de la pagina */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #faf8f5;
+    color: #2c2c2c;
+    text-align: center;
+    line-height: 1.6;
+}
+/* =========================================
+   ESTILOS PARA EL DASHBOARD (SIDEBAR LATERAL)
+   ========================================= */
+
+/* Contenedor que divide la pantalla en 2 */
+#dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #faf8f5;
+}
+
+/* --- BARRA LATERAL (Izquierda) --- */
+#sidebar {
+    width: 260px;
+    background-color: #1a1a1a;
+    color: #a0a0a0;
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Se queda estático al hacer scroll */
+    height: 100vh;
+    border-right: 1px solid #2c2c2c;
+    z-index: 100;
+}
+
+.sidebar-header {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #2c2c2c;
+}
+
+.sidebar-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #ffffff; /* Blanco para resaltar sobre oscuro */
+    letter-spacing: 2px;
+    margin-bottom: 0.2rem;
+}
+
+.sidebar-header p {
+    font-size: 0.85rem;
+    color: #7a7a7a;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* Menú de navegación en columna */
+.menu-lateral {
+    flex: 1; /* Empuja el footer hacia abajo */
+    padding: 2rem 0;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral ul li a {
+    display: block;
+    color: #a0a0a0;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent; /* Borde invisible preparatorio */
+}
+
+.menu-lateral ul li a:hover {
+    color: #ffffff;
+    background-color: #2c2c2c;
+    border-left: 3px solid #ffffff; /* Detalle elegante al pasar el mouse */
+}
+
+/* Pie de página del sidebar */
+.sidebar-footer {
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 0.75rem;
+    border-top: 1px solid #2c2c2c;
+    color: #555;
+    letter-spacing: 1px;
+}
+
+/* --- CONTENIDO PRINCIPAL (Derecha) --- */
+#contenido-principal {
+    margin-left: 260px; /* Deja el hueco exacto del ancho del sidebar */
+    padding: 3rem 4rem;
+    width: calc(100% - 260px);
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+/* Ajuste para que las tablas de Bootstrap se vean bien en tu fondo blanco */
+.table-responsive {
+    margin-top: 2rem;
+    border: 1px solid #e8e3de;
+    border-radius: 4px;
+    padding: 1rem;
+    background: #faf8f5;
+}
+/* secciones del main (sobre mi, curiosidades, habilidades) por ejemplo*/
+#seccion {
+    background: #f5f0eb; /* fondo claro a las seccinoes*/
+    border-radius: 4px;
+    padding: 1rem 1.5rem; 
+    margin: 1.5rem 0; /* rem y 0 para agregar espacio arriba y abajo, pero no a los lados */
+    border: 1px solid #e8e3de; /* borde para separar las secciones del contenido principal */
+}
+
+/* listas dentro de las secciones */
+#seccion ul{
+    list-style: none; /*elimina los puntos de la lista li */
+    gap: 0.5rem;  /*agrega espacio entre los elementos de la lista */
+    flex-wrap: wrap; /* los elementos de la lista se envuelvan a la siguiente línea si no caben en una sola línea */
+    /* aqui aplicamos bien el flex*/
+    display: flex; /*los elementos de la lista se muestren en línea */
+    justify-content: center; /* justifica los elementos de la lista en el centro */
+    margin-top: 2.5rem;
+}
+
+/* enlaces dentro de las listas de las secciones */
+#seccion ul li a {
+    text-decoration: none; /* quita el subrayado de los enlaces o etiquetas a */  
+    color: #6b6b6b; /* color del texto de los enlaces dentro de las secciones */
+    font-weight: 410; 
+    font-size: 0.83rem; /* texto de los enlaces dentro de las secciones sea mas pequenio */
+    padding: 0.85rem 0.9rem; /*espacio dentro de los enlaces de las secciones */
+    border: 1px solid #e8e3de; /* borde para separar los enlaces dentro de las secciones */
+    border-radius: 4px; /* bordes redondeados para los enlaces dentro de las secciones */
+    transition: all 0.3s ease; /* transicion de los enlaces dentro de las secciones */
+    display: flex; /* enlace se muestre como un bloque en línea, lo que permite que el padding funcione bien pes*/
+    justify-content: space-between;
+    letter-spacing: 2px; /* espacio entre letras del enlace dentro de la seccion */
+}
+
+#seccion ul li a:hover {
+    background: #2c2c2c; /* fondo oscuro al pasar el mouse por encima de los enlaces dentro de las secciones */
+    color: #ffffff; /* color blanco al pasar mouse */
+    border-color:#2c2c2c; 
+}
+
+.galeria {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+/* IMAGENES */
+img {
+    border-radius: 5px;
+    transition: all 0.3s ease ;
+    max-width: 30%;
+    height: auto;
+    filter: grayscale(10%);
+}
+
+img:hover{
+    filter: grayscale(0%);
+    box-shadow: 8px 24px rgba(0, 0, 0, 0.08); /*sombras al pasar el mouse por la imagen*/
+}
+
+/*texto de imagen*/
+figcaption {
+    font-size: 0.8rem;
+    color: #8a8a8a;
+    margin-top: 0.75rem;
+    font-style: italic;
+    letter-spacing: 0.3px;
+}
+
+video {
+    border-radius: 20px;
+    max-width: 100%;
+}
+
+
+/*listas dd*/
+li{
+    list-style-type: none;
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+dt{
+    font-weight: 500;
+    color: #2c2c2c;
+    margin-top: 1rem;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+}
+
+dd{
+    color: #6b6b6b;
+    margin-left: 0;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    font-size: 0.9rem;
+
+}
+
+/* MENU PRINCIPAL */
+.menu-principal{
+    max-width: 500px;
+    margin: 2.5rem auto
+}
+
+/* menú principal (lista de enlaces) */
+.menu-principal nav li {
+    list-style: none; /* esto elimina los puntos de la lista, pero ya lo elimine arriba */ 
+    border: 1px solid #e8e3de;
+    display: flex; /* esto hace que los elementos de la lista se muestren en línea */
+    flex-direction: column; /* esto hace que los elementos de la lista se muestren en columna */
+}
+
+/* enlaces del menú principal */
+.menu-principal  nav ul li a {
+    display: block; /* esto hace que el enlace ocupe todo el espacio del elemento de la lista */
+    padding: 10px 20px; /* esto agrega espacio dentro de cada elemento del menú */
+    text-decoration: none; /* esto elimina el subrayado de los enlaces o etiquetas a */
+    color: #2c2c2c; /* color del texto del menú */
+    transition: 0.3s ease; /* transición suave para el cambio de color */
+}
+
+/* enlaces del menú principal al pasar el mouse por encima */
+.menu-principal nav ul li a:hover {
+    background-color: #2c2c2c;
+    color: #faf8f5;
+    transition: background-color 0.3s ease, color 0.3s ease; /* transición suave para el cambio de color */;
+
+}
+
+/*FORMULARIO*/
+form{
+    background: #ffffff;
+    padding: 2rem; /* espacio entre p y h2*/
+    border: 1px solid #e8e3de;
+    border-radius: 4px; /* borde del form label e inputs */
+    margin-top: 1.5rem; /* espacion abajo y arriba */
+}
+
+/*label del formulario */
+label{
+    display: block;
+    font-weight: 500; /* grosor de la fuente */
+    color: #2c2c2c;
+    margin-bottom: 0.4rem; /* espacion arriba y abajo */
+    font-size: 0.85rem; /* tamanio de fuente */
+    text-transform: uppercase; /* mayuscula todo */
+    letter-spacing: 0.5px; /* espacion entre letras */
+}
+
+/* inputs del label del formulario */
+input[type="text"],
+input[type="email"],
+textarea{   
+    width: 100%; /* ocupa el 100 de espacio los inputs, textTarea tmb */
+    padding: 0.75rem 1rem; /* relleno de inputs mas grades */
+    border: 1px solid #e8e3de;
+    border-radius: 4px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.95rem; /*tamanio de letra en input*/
+    font-weight: 300; /*groso de letra en input*/
+    color:#2c2c2c;
+    background: #ffffff;
+    transition: all 0.3s ease; /*efecto suave al hacer click al input*/
+    margin-bottom: 1.25rem; /*espacios entre inputs*/
+}
+
+/*focus de los inputs del label*/
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none; /* desactivamos el auto color de focus */ 
+    border-color: #3d3d3d; /*hacer click al focus ahora es color escuro*/
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px; /*altura minima de textTarea osea mensaje*/
+}
+
+
+/* boton del formulario */
+button[type="submit"]{
+    background: #2c2c2c; /*fondo del boton*/
+    color: #ffffff; /*color del texto del boton*/
+    border: 1px solid #2c2c2c;
+    padding: 0.75rem 2.5rem; /*grosor del botton*/
+    font-size: 0.85rem; /*tamanio de fuente */
+    font-weight: 400;
+    font-family: 'Inter', -apple-system, sans-serif;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0,3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px; /*espacio de texto*/
+}
+
+/*efecto en boton del formulario*/
+button[type="submit"]:hover {
+    background: transparent;
+    color:#000000 /*color de texto del boton al pasar click*/ 
+}
+
+/* PIE DE PAGINA */
+footer {
+    background: #1a1a1a;
+    color: #a0a0a0;
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    font-size: 0.875rem; /* esto hace que el texto del pie de página sea un poco más pequeño que el texto normal */
+    letter-spacing: 2.5px; /* esto agrega espacio entre las letras del texto (pie de página) */
+}
+
+footer p {
+    margin: 0; 
+    font-weight: 300; /* esto hace que el texto del pie de página sea un poco más ligero que el texto normal */
+    color:#afa8a8; /* color del texto del pie de página */
+}
+
+/*enlaces */
+a {
+    color:#2c2c2c;
+    text-decoration: none; 
+    font-weight: 400;
+    transition: 0.3s ease;
+}
+
+a:hover {
+    color: #2c2c2c;
+}
+
+a[href="menu.html"] {
+    color: #2c2c2c;
+    border: 1px solid #2c2c2c;
+    border-radius: 4px;
+    margin-top: 1.3rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px; 
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase; /* mayusculas para el enlace del menú principal */
+    display: inline-block;
+}   
+
+a[href="menu.html"]:hover {
+    background-color: #2c2c2c;
+    color: #faf8f5;
+    text-decoration: none;
+}   
+
+a[href="#inicio"] {
+    color: #2c2c2c;
+    border: 1px solid #2c2c2c;
+    border-radius: 4px;
+    margin-top: 1.3rem;
+    padding: 0.5rem 1.3rem; /*relleno del enlace*/
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px; 
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase; /* mayusculas para el enlace del menú principal */
+    display: inline-block;
+}
+
+a[href="#inicio"]:hover{
+    background-color: #2c2c2c;
+    color: #faf8f5;
+    text-decoration: none;
+}
+
+
+/**/
+section {
+    margin-bottom: 3.5rem;
+}
+
+
+/* =========================================
+   MEJORAS VISUALES: TÍTULOS Y TABLAS
+   ========================================= */
+
+/* Títulos de los módulos (Catálogo de Libros, Usuarios, etc.) */
+
+#contenido-principal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+#contenido-principal h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #1a1a1a;
+    font-weight: 600;
+    border-bottom: none; 
+    margin-bottom: 0;
+}
+
+/* Rediseño premium de la tabla */
+.table-responsive {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra elegante */
+    border: 1px solid #e8e3de;
+    padding: 0; 
+    overflow: hidden; /* Redondea las esquinas de la tabla */
+    margin-top: 1.5rem;
+
+    /* ESTA ES LA MAGIA PARA CELULARES */
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; /* Hace que el deslizamiento sea suave en iOS */
+    
+    margin-top: 1.5rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+/* Cabecera de la tabla coordinada con el menú lateral */
+.table thead th {
+    background-color: #1a1a1a; 
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border-bottom: none;
+    padding: 1.2rem 1rem;
+}
+
+/* Filas de la tabla */
+.table tbody td {
+    vertical-align: middle;
+    padding: 1rem;
+    color: #4a4a4a;
+    border-bottom: 1px solid #f5f0eb;
+    font-size: 0.95rem;
+}
+
+/* Suavizar el color de las filas intercaladas */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: #faf8f5; 
+}
+
+
+
+/* =========================================
+   DISEÑO RESPONSIVO (MÓVILES Y TABLETS)
+   ========================================= */
+
+@media screen and (max-width: 768px) {
+    /* El contenedor pasa de fila a columna */
+    #dashboard-wrapper {
+        flex-direction: column;
+    }
+
+    /* El menú ya no es fijo a la izquierda, va arriba */
+    #sidebar {
+        width: 100%;
+        height: auto;
+        /* ESTO LO FIJA ARRIBA AL HACER SCROLL */
+        position: sticky; 
+        top: 0;
+        z-index: 1000; /* Asegura que flote por encima del contenido */
+        position: relative; 
+        border-right: none;
+        border-bottom: 1px solid #2c2c2c;
+    }
+
+    .sidebar-header {
+        padding: 1.5rem;
+    }
+
+    /* Los enlaces del menú se ponen en línea horizontal */
+    .menu-lateral ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .menu-lateral ul li {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    /* Ajuste de los bordes del menú en modo móvil */
+    .menu-lateral ul li a {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.75rem;
+        border-left: none;
+        border-bottom: 3px solid transparent; 
+    }
+
+    .menu-lateral ul li a:hover {
+        border-left: none;
+        border-bottom: 3px solid #ffffff; 
+    }
+
+    .sidebar-footer {
+        display: none; /* Ocultamos el footer en móvil para ahorrar espacio */
+    }
+
+    /* El contenido principal recupera el 100% del ancho */
+    #contenido-principal {
+        margin-left: 0;
+        width: 100%;
+        padding: 1.5rem; 
+    }
+}

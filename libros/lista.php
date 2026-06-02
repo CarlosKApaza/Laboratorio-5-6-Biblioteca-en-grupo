@@ -1,6 +1,8 @@
 <?php
 include '../conexion.php';
+
 $sql = "SELECT * FROM libros ORDER BY id DESC";
+
 $resultado = $con->query($sql);
 ?>
 

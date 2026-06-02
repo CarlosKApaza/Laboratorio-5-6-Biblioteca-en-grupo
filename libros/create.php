@@ -8,8 +8,8 @@ $categoria = $_POST['categoria'];
 $stock = $_POST['stock'];
 
 
-
-$sql = "INSERT INTO libros (titulo, autor, isbn, categoria, stock) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO libros (titulo, autor, isbn, categoria, stock) 
+        VALUES (?, ?, ?, ?, ?)";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("ssssi", $titulo, $autor, $isbn, $categoria, $stock);
 
