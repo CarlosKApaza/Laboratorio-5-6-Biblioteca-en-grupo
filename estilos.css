@@ -29,7 +29,7 @@ body {
 
 /* --- BARRA LATERAL (Izquierda) --- */
 #sidebar {
-    width: 260px;
+    width: 270px;
     background-color: #1a1a1a;
     color: #a0a0a0;
     display: flex;

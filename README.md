@@ -1,6 +1,6 @@
 # 1. Documentación: El Dashboard (`index.php` + `estilos.css`)
 
-Esta es la capa principal del sistema. El objetivo aquí es lograr una **SPA (Single Page Application)**, es decir, una aplicación web donde el navegador nunca parpadea ni recarga la página por completo, ofreciendo una experiencia fluida.
+Esta es la capa principal del sistema. El objetivo aquí es lograr una **SPA (Single Page Application)**, es decir, una aplicación web donde el navegador nunca parpadea ni recarga la página por completo.
 
 ## Archivos Principales
 
