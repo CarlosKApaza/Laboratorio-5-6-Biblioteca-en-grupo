@@ -80,4 +80,5 @@ function guardarLibro() {
 
 
 function limpiarFormularioLibro(){
+    
 }

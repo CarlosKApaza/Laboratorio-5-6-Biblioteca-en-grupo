@@ -1,8 +1,8 @@
 ----- Lista de Integrantes ----
 
 
-1
-2
-3
-4
-5
+1. Apaza Villca Carlos Daniel Kevin
+2. Apaza Albarado Gustavo Gabriel
+3. Diaz Campo Laura Luciana
+4. Salinas Quispe Joel Edilson
+5. Cornejo Moscoso Gabriel Orlando
