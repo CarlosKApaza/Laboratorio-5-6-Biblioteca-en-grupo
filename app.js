@@ -46,7 +46,7 @@ function guardarLibro() {
     }
 
     const form = document.getElementById('formLibro');
-    const formData = new FormData(form);
+    const formData = new FormData(form); // recoger de manera automatica todos los datos del formulario
     const idLibro = document.getElementById('libro_id').value;
     const ruta = (idLibro !== "") ? 'libros/update.php' : 'libros/create.php';
 
@@ -115,7 +115,7 @@ function editarLibro(id) {
 // eliminar
 function eliminarLibro(id){
     if(confirm("¿Estás seguro de eliminar este libro?")) {
-        const formData = new FormData();
+        const formData = new FormData(); // recoger de manera automatica todos los datos del formulario
         formData.append('id', id);
 
         fetch('libros/delete.php', {
@@ -172,7 +172,7 @@ function abrirModalUsuario() {
 // guardar usuario
 function guardarUsuario() {
     const form = document.getElementById('formUsuario');
-    const formData = new FormData(form);
+    const formData = new FormData(form); // recoger de manera automatica todos los datos del formulario
 
     // leemos el id oculto del usuario
     const idUsuario = document.getElementById('usuario_id').value;
@@ -300,7 +300,7 @@ function abrirModalPrestamo() {
 // guardar prestamo
 function guardarPrestamo() {
     const form = document.getElementById('formPrestamo');
-    const formData = new FormData(form);
+    const formData = new FormData(form); // recoger de manera automatica todos los datos del formulario
 
     fetch("prestamos/create.php", {
         method: 'POST',
