@@ -65,4 +65,6 @@ El sistema se basa en Promesas (`.then()`). El flujo estándar es:
 ## Variables Globales
 * **`let modalGlobal = null;`** Almacena la instancia del Modal de Bootstrap. Al declararse globalmente, permite que cualquier función (como `abrirModalRegistro` o `editarLibro`) pueda inicializarlo, y que `guardarLibro` pueda cerrarlo (`modalGlobal.hide()`).
 
+
+## FALTA AGERGAR UN POCO MAS SOBRE LO AVANZADO EN EL README.md
 ----------------------------------------------------------------
