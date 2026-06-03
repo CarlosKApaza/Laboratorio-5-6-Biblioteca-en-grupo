@@ -266,5 +266,129 @@ function eliminarUsuario(id){
 
 
 
+//---------------------------------------- parte 2
+
+// Modal para prestamo
+function abrirModalPrestamo() {
+    const espacioModal = document.getElementById('espacio-modal');
+    
+    fetch('prestamos/registro.php')
+        .then(response => response.text())
+        .then(htmlForm => {
+            espacioModal.innerHTML = `
+                <div class="modal fade" id="modalDinamico" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title">Registrar Nuevo Prestamo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                ${htmlForm} 
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            
+            modalGlobal = new bootstrap.Modal(document.getElementById('modalDinamico'));
+            modalGlobal.show();
+        })
+        .catch(error => alert("Error al cargar formulario de usuario: " + error));
+}
 
 
+// guardar prestamo
+function guardarPrestamo() {
+    const form = document.getElementById('formPrestamo');
+    const formData = new FormData(form);
+
+    fetch("prestamos/create.php", {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        if(data.status === "ok") {
+            alert(data.mensaje);
+            modalGlobal.hide(); 
+            cargarContenido('prestamos/lista.php'); 
+        } else {
+            alert("Error: " + data.mensaje);
+        }
+    })
+    .catch(error => console.error('Hubo un error:', error));
+}
+
+// Cambiar estado del Préstamo (Devolver o Vencer)
+function cambiarEstadoPrestamo(idPrestamo, nuevoEstado, idLibro) {
+    if(confirm(`¿Estás seguro de marcar este préstamo como ${nuevoEstado}?`)) {
+        
+        const formData = new FormData();
+        formData.append('id', idPrestamo);
+        formData.append('estado', nuevoEstado);
+        formData.append('id_libro', idLibro);
+
+        fetch('prestamos/update_estado.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === "ok") {
+                alert(data.mensaje);
+                cargarContenido('prestamos/lista.php'); // Recargamos para ver el cambio
+            } else {
+                alert("Error: " + data.mensaje);
+            }
+        })
+        .catch(error => console.error('Hubo un error:', error));
+    }
+}
+
+// filtrar tabla
+function filtrarTabla() {
+    let estado = document.getElementById("filtroEstado").value.toUpperCase();
+    let texto = document.getElementById("filtroTexto").value.toUpperCase();
+    let filas = document.querySelectorAll("#tablaPrestamos tbody tr");
+
+    filas.forEach(fila => {
+        // Obtenemos los textos de las columnas: Libro (1), Usuario (2) y Estado (5)
+        let colLibro = fila.cells[1].textContent.toUpperCase();
+        let colUsuario = fila.cells[2].textContent.toUpperCase();
+        let colEstado = fila.cells[5].textContent.toUpperCase();
+
+        // Verificamos si coinciden
+        let coincideEstado = (estado === "TODOS" || colEstado.includes(estado));
+        let coincideTexto = (colLibro.includes(texto) || colUsuario.includes(texto));
+
+        // Mostrar u ocultar la fila
+        if (coincideEstado && coincideTexto) {
+            fila.style.display = "";
+        } else {
+            fila.style.display = "none";
+        }
+    });
+}
+
+// eliminar prestamo
+function eliminarPrestamo(id) {
+    if(confirm("¿Estás seguro de eliminar el registro de este préstamo del historial?")) {
+        const formData = new FormData();
+        formData.append('id', id);
+
+        fetch('prestamos/delete.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === "ok") {
+                alert(data.mensaje);
+                cargarContenido('prestamos/lista.php'); // Recargamos para que desaparezca
+            } else {
+                alert("Error: " + data.mensaje);
+            }
+        })
+        .catch(error => console.error('Hubo un error:', error));
+    }
+}

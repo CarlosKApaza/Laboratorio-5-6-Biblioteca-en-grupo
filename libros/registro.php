@@ -20,7 +20,7 @@
     </div>
     <div class="mb-3">
         <label>Stock inicial:</label>
-        <input type="number" name="stock" id="stock" class="form-control" min="0" value="1" required>
+        <input type="number" name="stock" id="stock" class="form-control" required>
     </div>
 
     <button type="submit" class="btn btn-primary w-100">Guardar Libro</button>
