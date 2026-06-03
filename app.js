@@ -1,4 +1,5 @@
-let modalGlobal = null; // Guardará la instancia del modal
+let modalGlobal = null; 
+
 // cargar contenido
 function cargarContenido(ruta) {
     const contenedor = document.getElementById('contenido-principal');
@@ -9,8 +10,7 @@ function cargarContenido(ruta) {
         });
 }
 
-// Modal Reigstro Lirbo
-// Modal Registro Libros (Versión simplificada)
+// 
 function abrirModalRegistro() {
     const espacioModal = document.getElementById('espacio-modal');
     
@@ -122,6 +122,7 @@ function eliminarLibro(id){
             method: 'POST',
             body: formData
         })
+
         .then(response => response.json())
         .then(data => {
             if(data.status === "ok") {
@@ -194,5 +195,76 @@ function guardarUsuario() {
     })
     .catch(error => console.error('Hubo un error:', error));
 }
+
+
+// editar usuario
+function editarUsuario(id) {
+    const espacioModal = document.getElementById('espacio-modal');
+
+    // 1. Pedimos el formulario
+    fetch('usuarios/registro.php')
+        .then(res => res.text())
+        .then(htmlForm => {
+            // Inyectamos el modal con estilo warning
+            espacioModal.innerHTML = `
+                <div class="modal fade" id="modalDinamico" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-warning text-dark">
+                                <h5 class="modal-title">Editar Usuario</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">${htmlForm}</div>
+                        </div>
+                    </div>
+                </div>`;
+
+            modalGlobal = new bootstrap.Modal(document.getElementById('modalDinamico'));
+
+            // Retornamos el segundo fetch para seguir la cadena abajo
+            return fetch(`usuarios/get.php?id=${id}`);
+        })
+        .then(res => res.json()) // Convertimos la respuesta del segundo fetch a JSON
+        .then(usuario => {
+            // Llenamos los campos con los datos del servidor
+            document.getElementById('usuario_id').value = usuario.id;
+
+            document.getElementById('usuario_nombre').value = usuario.nombre;
+            document.getElementById('usuario_carnet').value = usuario.carnet;
+            document.getElementById('usuario_telefono').value = usuario.telefono;
+            document.getElementById('usuario_correo').value = usuario.correo;
+
+            // Cambiamos el botón y mostramos
+            document.querySelector('#formUsuario button[type="submit"]').textContent = "Actualizar Usuario";
+            modalGlobal.show();
+        })
+        .catch(err => alert("Hubo un problema al cargar los datos: " + err));
+}
+
+// eliminar
+function eliminarUsuario(id){
+    if(confirm("¿Estás seguro de eliminar este Usuario?")) {
+        const formData = new FormData();
+        formData.append('id', id);
+
+        fetch('usuarios/delete.php', {
+            method: 'POST',
+            body: formData
+        })
+
+        .then(response => response.json())
+        .then(data => {
+            if(data.status === "ok") {
+                alert(data.mensaje);
+                cargarContenido('usuarios/lista.php');
+            } else {
+                alert("Error: " + data.mensaje);
+            }
+        });
+    }
+}
+
+
+
 
 

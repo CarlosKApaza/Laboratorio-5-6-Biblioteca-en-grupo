@@ -34,6 +34,7 @@ $resultado = $con->query($sql);
                 <td><?php echo $libro['autor']; ?></td>
                 <td><?php echo $libro['isbn']; ?></td>
                 <td><?php echo $libro['categoria']; ?></td>
+                
                 <td>
                     <span class="badge <?php echo ($libro['stock'] > 0) ? 'bg-success' : 'bg-danger'; ?>">
                         <?php echo $libro['stock']; ?>
